@@ -12,6 +12,7 @@
         <module>changgou-service</module>
         <module>changgou-service-api</module>
         <module>changgou-web</module>
+        <module>changgou-eureka</module>
     </modules>
     <packaging>pom</packaging>
 
