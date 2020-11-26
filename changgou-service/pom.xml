@@ -11,5 +11,17 @@
 
     <artifactId>changgou-service</artifactId>
     <packaging>pom</packaging>
+    <modules>
+        <module>changgou-service-goods</module>
+    </modules>
+
+    <!--依赖-->
+    <dependencies>
+        <dependency>
+            <groupId>com.sz.quinn</groupId>
+            <artifactId>changgou-common-db</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 
 </project>

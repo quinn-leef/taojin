@@ -3,33 +3,30 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>changgou-parent</artifactId>
+        <artifactId>changgou-service</artifactId>
         <groupId>com.sz.quinn</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>changgou-service-api</artifactId>
-    <packaging>pom</packaging>
-    <modules>
-        <module>changgou-service-goods-api</module>
-    </modules>
-
+    <artifactId>changgou-service-goods</artifactId>
+    <!--依赖-->
     <dependencies>
-        <!--通用的common-->
         <dependency>
             <groupId>com.sz.quinn</groupId>
-            <artifactId>changgou-common</artifactId>
+            <artifactId>changgou-service-goods-api</artifactId>
             <version>1.0-SNAPSHOT</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>guava</artifactId>
+                    <groupId>com.google.guava</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
-        <!--每个工程都有Pojo，都需要用到该包对应的注解-->
-        <dependency>
-            <groupId>javax.persistence</groupId>
-            <artifactId>persistence-api</artifactId>
-            <version>1.0</version>
-            <scope>compile</scope>
-        </dependency>
+
+
     </dependencies>
+
 
 </project>
