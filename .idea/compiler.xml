@@ -9,6 +9,7 @@
         <module name="changgou-common" />
         <module name="changgou-common-db" />
         <module name="changgou-eureka" />
+        <module name="changgou-service-file" />
         <module name="changgou-service-goods" />
         <module name="changgou-service-goods-api" />
       </profile>
