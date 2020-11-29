@@ -1,10 +1,12 @@
 package com.changgou.goods.service;
-
 import com.changgou.goods.pojo.Album;
 import com.github.pagehelper.PageInfo;
-
 import java.util.List;
-
+/****
+ * @Author:quinn
+ * @Description:Album业务层接口
+ * @Date 20201129
+ *****/
 public interface AlbumService {
 
     /***
@@ -54,7 +56,7 @@ public interface AlbumService {
      * @param id
      * @return
      */
-    Album findById(Long id);
+     Album findById(Long id);
 
     /***
      * 查询所有Album

@@ -1,10 +1,12 @@
 package com.changgou.goods.service;
-
 import com.changgou.goods.pojo.Template;
 import com.github.pagehelper.PageInfo;
-
 import java.util.List;
-
+/****
+ * @Author:quinn
+ * @Description:Template业务层接口
+ * @Date 20201129
+ *****/
 public interface TemplateService {
 
     /***
@@ -51,16 +53,14 @@ public interface TemplateService {
 
     /**
      * 根据ID查询Template
-     *
      * @param id
      * @return
      */
-    Template findById(Integer id);
+     Template findById(Integer id);
 
     /***
      * 查询所有Template
      * @return
      */
     List<Template> findAll();
-
 }

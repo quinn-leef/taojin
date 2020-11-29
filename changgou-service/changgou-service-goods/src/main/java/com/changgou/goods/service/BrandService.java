@@ -1,62 +1,16 @@
 package com.changgou.goods.service;
-
 import com.changgou.goods.pojo.Brand;
 import com.github.pagehelper.PageInfo;
-
 import java.util.List;
-
+/****
+ * @Author:quinn
+ * @Description:Brand业务层接口
+ * @Date 20201129
+ *****/
 public interface BrandService {
 
     /***
-     * 查询所有品牌
-     * @return
-     */
-    List<Brand> findAll();
-
-    /**
-     * 根据ID查询
-     * @param id
-     * @return
-     */
-    Brand findById(Integer id);
-
-    /**
-     * 修改商品信息
-     * @param brand
-     * @return
-     */
-    void update(Brand brand);
-
-    /***
-     * 新增品牌
-     * @param brand
-     */
-    void add(Brand brand);
-
-    /***
-     * 删除品牌
-     * @param id
-     */
-    void delete(Integer id);
-
-    /***
-     * 多条件搜索品牌方法
-     * @param brand
-     * @return
-     */
-    List<Brand> findList(Brand brand);
-
-
-    /***
-     * 分页查询
-     * @param page
-     * @param size
-     * @return
-     */
-    PageInfo<Brand> findPage(int page, int size);
-
-    /***
-     * 多条件分页查询
+     * Brand多条件分页查询
      * @param brand
      * @param page
      * @param size
@@ -64,4 +18,55 @@ public interface BrandService {
      */
     PageInfo<Brand> findPage(Brand brand, int page, int size);
 
+    /***
+     * Brand分页查询
+     * @param page
+     * @param size
+     * @return
+     */
+    PageInfo<Brand> findPage(int page, int size);
+
+    /***
+     * Brand多条件搜索方法
+     * @param brand
+     * @return
+     */
+    List<Brand> findList(Brand brand);
+
+    /***
+     * 删除Brand
+     * @param id
+     */
+    void delete(Integer id);
+
+    /***
+     * 修改Brand数据
+     * @param brand
+     */
+    void update(Brand brand);
+
+    /***
+     * 新增Brand
+     * @param brand
+     */
+    void add(Brand brand);
+
+    /**
+     * 根据ID查询Brand
+     * @param id
+     * @return
+     */
+     Brand findById(Integer id);
+
+    /***
+     * 查询所有Brand
+     * @return
+     */
+    List<Brand> findAll();
+
+    /***
+     * 根据分类ID查询品牌集合
+     * @param categoryid:分类ID
+     */
+    List<Brand> findByCategory(Integer categoryid);
 }
