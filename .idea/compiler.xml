@@ -9,6 +9,9 @@
         <module name="changgou-common" />
         <module name="changgou-common-db" />
         <module name="changgou-eureka" />
+        <module name="changgou-service-canal" />
+        <module name="changgou-service-content" />
+        <module name="changgou-service-content-api" />
         <module name="changgou-service-file" />
         <module name="changgou-service-goods" />
         <module name="changgou-service-goods-api" />
