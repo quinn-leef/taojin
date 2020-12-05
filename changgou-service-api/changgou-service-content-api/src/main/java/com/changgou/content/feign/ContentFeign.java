@@ -25,7 +25,7 @@ public interface ContentFeign {
      * @return
      */
     @PostMapping(value = "/search/{page}/{size}" )
-    Result<PageInfo> findPage(@RequestBody(required = false) Content content, @PathVariable int page, @PathVariable int size);
+    Result<PageInfo> findPage(@RequestBody(required = false) Content content, @PathVariable("page") int page, @PathVariable("size") int size);
 
     /***
      * Content分页搜索实现
@@ -34,7 +34,7 @@ public interface ContentFeign {
      * @return
      */
     @GetMapping(value = "/search/{page}/{size}" )
-    Result<PageInfo> findPage(@PathVariable int page, @PathVariable int size);
+    Result<PageInfo> findPage(@PathVariable("page") int page, @PathVariable("size") int size);
 
     /***
      * 多条件搜索品牌数据
@@ -50,7 +50,7 @@ public interface ContentFeign {
      * @return
      */
     @DeleteMapping(value = "/{id}" )
-    Result delete(@PathVariable Long id);
+    Result delete(@PathVariable("id") Long id);
 
     /***
      * 修改Content数据
@@ -59,7 +59,7 @@ public interface ContentFeign {
      * @return
      */
     @PutMapping(value="/{id}")
-    Result update(@RequestBody Content content, @PathVariable Long id);
+    Result update(@RequestBody Content content, @PathVariable("id") Long id);
 
     /***
      * 新增Content数据
@@ -75,7 +75,7 @@ public interface ContentFeign {
      * @return
      */
     @GetMapping("/{id}")
-    Result<Content> findById(@PathVariable Long id);
+    Result<Content> findById(@PathVariable("id") Long id);
 
     /***
      * 查询Content全部数据
@@ -88,5 +88,5 @@ public interface ContentFeign {
      * 根据分类ID查询所有广告
      */
     @GetMapping(value = "/list/category/{id}")
-    Result<List<Content>> findByCategory(@PathVariable Long id);
+    Result<List<Content>> findByCategory(@PathVariable("id") Long id);
 }

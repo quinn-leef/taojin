@@ -111,5 +111,16 @@ public class Content implements Serializable{
 		this.sortOrder = sortOrder;
 	}
 
-
+	@Override
+	public String toString() {
+		return "Content{" +
+				"id=" + id +
+				", categoryId=" + categoryId +
+				", title='" + title + '\'' +
+				", url='" + url + '\'' +
+				", pic='" + pic + '\'' +
+				", status='" + status + '\'' +
+				", sortOrder=" + sortOrder +
+				'}';
+	}
 }

@@ -96,9 +96,10 @@ public class ContentController {
     @ApiOperation(value = "Content根据ID修改",notes = "根据ID修改Content方法详情",tags = {"ContentController"})
     @ApiImplicitParam(paramType = "path", name = "id", value = "主键ID", required = true, dataType = "Long")
     @PutMapping(value="/{id}")
-    public Result update(@RequestBody @ApiParam(name = "Content对象",value = "传入JSON数据",required = false) Content content,@PathVariable Long id){
+    public Result update(@RequestBody @ApiParam(name = "Content对象",value = "传入JSON数据",required = false) Content content,@PathVariable("id") Long id){
         //设置主键值
         content.setId(id);
+        System.out.println(content.toString());
         //调用ContentService实现修改Content
         contentService.update(content);
         return new Result(true,StatusCode.OK,"修改成功");
