@@ -1,4 +1,4 @@
-package com.changgou.controller;
+package com.changgou.search.controller;
 
 import com.changgou.util.FastDFSClient;
 import om.changgou.file.FastDFSFile;
