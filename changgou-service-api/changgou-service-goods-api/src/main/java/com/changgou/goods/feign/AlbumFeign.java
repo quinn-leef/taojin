@@ -1,6 +1,6 @@
 package com.changgou.goods.feign;
 
-import com.changgou.goods.pojo.Sku;
+import com.changgou.goods.pojo.Album;
 import com.github.pagehelper.PageInfo;
 import entity.Result;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -14,21 +14,21 @@ import java.util.List;
  * @Date 2019/6/18 13:58
  *****/
 @FeignClient(name="goods")
-@RequestMapping("/sku")
-public interface SkuFeign {
+@RequestMapping("/album")
+public interface AlbumFeign {
 
     /***
-     * Sku分页条件搜索实现
-     * @param sku
+     * Album分页条件搜索实现
+     * @param album
      * @param page
      * @param size
      * @return
      */
     @PostMapping(value = "/search/{page}/{size}" )
-    Result<PageInfo> findPage(@RequestBody(required = false) Sku sku, @PathVariable("page") int page, @PathVariable("size") int size);
+    Result<PageInfo> findPage(@RequestBody(required = false) Album album, @PathVariable("page") int page, @PathVariable("size") int size);
 
     /***
-     * Sku分页搜索实现
+     * Album分页搜索实现
      * @param page:当前页
      * @param size:每页显示多少条
      * @return
@@ -38,11 +38,11 @@ public interface SkuFeign {
 
     /***
      * 多条件搜索品牌数据
-     * @param sku
+     * @param album
      * @return
      */
     @PostMapping(value = "/search" )
-    Result<List<Sku>> findList(@RequestBody(required = false) Sku sku);
+    Result<List<Album>> findList(@RequestBody(required = false) Album album);
 
     /***
      * 根据ID删除品牌数据
@@ -53,42 +53,34 @@ public interface SkuFeign {
     Result delete(@PathVariable("id") Long id);
 
     /***
-     * 修改Sku数据
-     * @param sku
+     * 修改Album数据
+     * @param album
      * @param id
      * @return
      */
     @PutMapping(value="/{id}")
-    Result update(@RequestBody Sku sku, @PathVariable("id") Long id);
+    Result update(@RequestBody Album album, @PathVariable("id") Long id);
 
     /***
-     * 新增Sku数据
-     * @param sku
+     * 新增Album数据
+     * @param album
      * @return
      */
     @PostMapping
-    Result add(@RequestBody Sku sku);
+    Result add(@RequestBody Album album);
 
     /***
-     * 根据ID查询Sku数据
+     * 根据ID查询Album数据
      * @param id
      * @return
      */
     @GetMapping("/{id}")
-    Result<Sku> findById(@PathVariable("id") Long id);
+    Result<Album> findById(@PathVariable("id") Long id);
 
     /***
-     * 查询Sku全部数据
+     * 查询Album全部数据
      * @return
      */
     @GetMapping
-    Result<List<Sku>> findAll();
-
-    /***
-     * 根据审核状态查询Sku
-     * @param status
-     * @return
-     */
-    @GetMapping("/status/{status}")
-    Result<List<Sku>> findByStatus(@PathVariable("status") String status);
+    Result<List<Album>> findAll();
 }

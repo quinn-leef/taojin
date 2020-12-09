@@ -101,6 +101,10 @@ public class SkuServiceImpl implements SkuService {
 
         //设置分组条件  商品分类
         nativeSearchQueryBuilder.addAggregation(AggregationBuilders.terms("skuCategorygroup").field("categoryName").size(50));
+
+        //设置分组条件  商品品牌
+        nativeSearchQueryBuilder.addAggregation(AggregationBuilders.terms("skuBrandgroup").field("brandName").size(50));
+
         nativeSearchQueryBuilder.withQuery(QueryBuilders.matchQuery("name", keywords));
 
         //4.构建查询对象
@@ -110,16 +114,15 @@ public class SkuServiceImpl implements SkuService {
         AggregatedPage<SkuInfo> skuPage = esTemplate.queryForPage(query, SkuInfo.class);
 
         //获取分组结果
-        StringTerms stringTerms = (StringTerms) skuPage.getAggregation("skuCategorygroup");
+        StringTerms stringTermsCategory = (StringTerms) skuPage.getAggregation("skuCategorygroup");
 
-        List<String> categoryList = new ArrayList<>();
+        //获取分组结果  商品品牌
+        StringTerms stringTermsBrand = (StringTerms) skuPage.getAggregation("skuBrandgroup");
 
-        if (stringTerms != null) {
-            for (StringTerms.Bucket bucket : stringTerms.getBuckets()) {
-                String keyAsString = bucket.getKeyAsString();//分组的值
-                categoryList.add(keyAsString);
-            }
-        }
+        List<String> categoryList = getStringsCategoryList(stringTermsCategory);
+
+        List<String> brandList = getStringsBrandList(stringTermsBrand);
+
         //6.返回结果
         Map resultMap = new HashMap<>();
         resultMap.put("categoryList", categoryList);
@@ -128,5 +131,39 @@ public class SkuServiceImpl implements SkuService {
         resultMap.put("totalPages", skuPage.getTotalPages());
 
         return resultMap;
+    }
+
+    /**
+     * 获取品牌列表
+     *
+     * @param stringTermsBrand
+     * @return
+     */
+    private List<String> getStringsBrandList(StringTerms stringTermsBrand) {
+        List<String> brandList = new ArrayList<>();
+        if (stringTermsBrand != null) {
+            for (StringTerms.Bucket bucket : stringTermsBrand.getBuckets()) {
+                brandList.add(bucket.getKeyAsString());
+            }
+        }
+        return brandList;
+    }
+
+
+    /**
+     * 获取分类列表数据
+     *
+     * @param stringTerms
+     * @return
+     */
+    private List<String> getStringsCategoryList(StringTerms stringTerms) {
+        List<String> categoryList = new ArrayList<>();
+        if (stringTerms != null) {
+            for (StringTerms.Bucket bucket : stringTerms.getBuckets()) {
+                String keyAsString = bucket.getKeyAsString();//分组的值
+                categoryList.add(keyAsString);
+            }
+        }
+        return categoryList;
     }
 }

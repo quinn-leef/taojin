@@ -1,6 +1,6 @@
 package com.changgou.goods.feign;
 
-import com.changgou.goods.pojo.Sku;
+import com.changgou.goods.pojo.Category;
 import com.github.pagehelper.PageInfo;
 import entity.Result;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -14,21 +14,21 @@ import java.util.List;
  * @Date 2019/6/18 13:58
  *****/
 @FeignClient(name="goods")
-@RequestMapping("/sku")
-public interface SkuFeign {
+@RequestMapping("/category")
+public interface CategoryFeign {
 
     /***
-     * Sku分页条件搜索实现
-     * @param sku
+     * Category分页条件搜索实现
+     * @param category
      * @param page
      * @param size
      * @return
      */
     @PostMapping(value = "/search/{page}/{size}" )
-    Result<PageInfo> findPage(@RequestBody(required = false) Sku sku, @PathVariable("page") int page, @PathVariable("size") int size);
+    Result<PageInfo> findPage(@RequestBody(required = false) Category category, @PathVariable("page") int page, @PathVariable("size") int size);
 
     /***
-     * Sku分页搜索实现
+     * Category分页搜索实现
      * @param page:当前页
      * @param size:每页显示多少条
      * @return
@@ -38,11 +38,11 @@ public interface SkuFeign {
 
     /***
      * 多条件搜索品牌数据
-     * @param sku
+     * @param category
      * @return
      */
     @PostMapping(value = "/search" )
-    Result<List<Sku>> findList(@RequestBody(required = false) Sku sku);
+    Result<List<Category>> findList(@RequestBody(required = false) Category category);
 
     /***
      * 根据ID删除品牌数据
@@ -50,45 +50,37 @@ public interface SkuFeign {
      * @return
      */
     @DeleteMapping(value = "/{id}" )
-    Result delete(@PathVariable("id") Long id);
+    Result delete(@PathVariable("id") Integer id);
 
     /***
-     * 修改Sku数据
-     * @param sku
+     * 修改Category数据
+     * @param category
      * @param id
      * @return
      */
     @PutMapping(value="/{id}")
-    Result update(@RequestBody Sku sku, @PathVariable("id") Long id);
+    Result update(@RequestBody Category category, @PathVariable("id") Integer id);
 
     /***
-     * 新增Sku数据
-     * @param sku
+     * 新增Category数据
+     * @param category
      * @return
      */
     @PostMapping
-    Result add(@RequestBody Sku sku);
+    Result add(@RequestBody Category category);
 
     /***
-     * 根据ID查询Sku数据
+     * 根据ID查询Category数据
      * @param id
      * @return
      */
     @GetMapping("/{id}")
-    Result<Sku> findById(@PathVariable("id") Long id);
+    Result<Category> findById(@PathVariable("id") Integer id);
 
     /***
-     * 查询Sku全部数据
+     * 查询Category全部数据
      * @return
      */
     @GetMapping
-    Result<List<Sku>> findAll();
-
-    /***
-     * 根据审核状态查询Sku
-     * @param status
-     * @return
-     */
-    @GetMapping("/status/{status}")
-    Result<List<Sku>> findByStatus(@PathVariable("status") String status);
+    Result<List<Category>> findAll();
 }
