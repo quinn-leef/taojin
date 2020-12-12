@@ -153,6 +153,7 @@ public class SkuServiceImpl implements SkuService {
         //构建过滤查询
         nativeSearchQueryBuilder.withFilter(boolQueryBuilder);
 
+
         //构建分页查询
         Integer pageNum = 1;
         if (!StringUtils.isEmpty(searchMap.get("pageNum"))) {
@@ -203,6 +204,19 @@ public class SkuServiceImpl implements SkuService {
         resultMap.put("rows", skuPage.getContent());
         resultMap.put("total", skuPage.getTotalElements());
         resultMap.put("totalPages", skuPage.getTotalPages());
+
+        //分页数据保存
+        //设置当前页码
+        resultMap.put("pageNum", pageNum);
+        resultMap.put("pageSize", 30);
+
+        //分页
+//        Page<SkuInfo> page = new Page<SkuInfo>(
+//                Long.parseLong(resultMap.get("totalPages").toString()),
+//                Integer.parseInt(resultMap.get("pageNum").toString()),
+//                Integer.parseInt(resultMap.get("pageSize").toString())
+//        );
+//        resultMap.put("page", page);
 
         return resultMap;
     }

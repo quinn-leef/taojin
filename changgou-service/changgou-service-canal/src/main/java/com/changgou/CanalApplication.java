@@ -10,7 +10,8 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @SpringBootApplication(exclude={DataSourceAutoConfiguration.class})
 @EnableEurekaClient
 @EnableCanalClient
-@EnableFeignClients
+//@EnableFeignClients
+@EnableFeignClients(basePackages = {"com.changgou.content.feign","com.changgou.item.feign"})
 public class CanalApplication {
 
     public static void main(String[] args) {
