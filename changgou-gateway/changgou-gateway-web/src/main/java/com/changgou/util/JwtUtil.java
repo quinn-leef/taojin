@@ -74,4 +74,18 @@ public class JwtUtil {
                 .parseClaimsJws(jwt)
                 .getBody();
     }
+
+
+    public static void main(String[] args) {
+        String jwt = JwtUtil.createJWT("weiyibiaoshi", "aaaaaa", null);
+        System.out.println(jwt);
+        try {
+            Claims claims = JwtUtil.parseJWT(jwt);
+            System.out.println(claims);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+    }
 }

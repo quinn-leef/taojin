@@ -1,7 +1,5 @@
 package com.changgou.filter;
 
-import com.changgou.util.JwtUtil;
-import io.jsonwebtoken.Claims;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.core.Ordered;
@@ -37,7 +35,8 @@ public class AuthorizeFilter implements GlobalFilter, Ordered {
         String path = request.getURI().getPath();
 
         //如果是登录、goods等开放的微服务[这里的goods部分开放],则直接放行,这里不做完整演示，完整演示需要设计一套权限系统
-        if (path.startsWith("/api/user/login") || path.startsWith("/api/brand/search/")) {
+//        if (path.startsWith("/api/user/login") || path.startsWith("/api/brand/search/")) {
+        if (URLFilter.hasAuthorize(path)) {
             //放行
             Mono<Void> filter = chain.filter(exchange);
             return filter;
@@ -66,8 +65,10 @@ public class AuthorizeFilter implements GlobalFilter, Ordered {
 
         //解析令牌数据
         try {
-            Claims claims = JwtUtil.parseJWT(tokent);
-            request.mutate().header(AUTHORIZE_TOKEN, claims.toString());
+            System.out.println("bearer " + tokent);
+//            Claims claims = JwtUtil.parseJWT(tokent);
+//            request.mutate().header(AUTHORIZE_TOKEN, claims.toString());
+            request.mutate().header(AUTHORIZE_TOKEN, tokent);
         } catch (Exception e) {
             e.printStackTrace();
             //解析失败，响应401错误

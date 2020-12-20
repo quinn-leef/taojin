@@ -1,4 +1,5 @@
 package com.changgou.user.service.impl;
+
 import com.changgou.user.dao.UserMapper;
 import com.changgou.user.pojo.User;
 import com.changgou.user.service.UserService;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import tk.mybatis.mapper.entity.Example;
+
 import java.util.List;
 /****
  * @Author:shenkunlin
@@ -204,4 +206,8 @@ public class UserServiceImpl implements UserService {
     public List<User> findAll() {
         return userMapper.selectAll();
     }
+
+//    public User findByUsername(String username) {
+//        return userMapper.selectByPrimaryKey(username);
+//    }
 }

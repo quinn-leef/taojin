@@ -2,7 +2,7 @@ package com.changgou.canal.listener;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.otter.canal.protocol.CanalEntry;
-import com.changgou.content.feign.ContentFeign;
+import com.changgou.user.feign.ContentFeign;
 import com.changgou.content.pojo.Content;
 import com.changgou.item.feign.PageFeign;
 import com.xpand.starter.canal.annotation.CanalEventListener;

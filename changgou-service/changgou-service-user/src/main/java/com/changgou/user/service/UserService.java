@@ -1,6 +1,8 @@
 package com.changgou.user.service;
+
 import com.changgou.user.pojo.User;
 import com.github.pagehelper.PageInfo;
+
 import java.util.List;
 /****
  * @Author:shenkunlin
@@ -63,4 +65,6 @@ public interface UserService {
      * @return
      */
     List<User> findAll();
+
+//    User findByUsername(String username);
 }

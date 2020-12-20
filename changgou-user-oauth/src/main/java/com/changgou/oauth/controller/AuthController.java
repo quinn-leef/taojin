@@ -52,6 +52,7 @@ public class AuthController {
 
         //用户身份令牌
         String access_token = authToken.getAccessToken();
+        System.out.println("bearer " + access_token);
         //将令牌存储到cookie
         saveCookie(access_token);
 

@@ -10,6 +10,7 @@ import entity.Result;
 import entity.StatusCode;
 import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.Cookie;
@@ -91,6 +92,7 @@ public class UserController {
      */
     @ApiOperation(value = "User根据ID删除",notes = "根据ID删除User方法详情",tags = {"UserController"})
     @ApiImplicitParam(paramType = "path", name = "id", value = "主键ID", required = true, dataType = "String")
+    @PreAuthorize("hasAnyAuthority('admin')")
     @DeleteMapping(value = "/{id}" )
     public Result delete(@PathVariable String id){
         //调用UserService实现根据主键删除
@@ -135,12 +137,26 @@ public class UserController {
      */
     @ApiOperation(value = "User根据ID查询",notes = "根据ID查询User方法详情",tags = {"UserController"})
     @ApiImplicitParam(paramType = "path", name = "id", value = "主键ID", required = true, dataType = "String")
-    @GetMapping("/{id}")
-    public Result<User> findById(@PathVariable String id){
+//    @GetMapping({"/{id}", "/load/{id}"})
+    @GetMapping("{id}")
+    public Result<User> findById(@PathVariable("id") String id){
         //调用UserService实现根据主键查询User
         User user = userService.findById(id);
         return new Result<User>(true,StatusCode.OK,"查询成功",user);
     }
+
+    /**
+     * 加载用户的数据
+     * @param id
+     * @return
+     */
+    @GetMapping("/load/{id}")
+    public Result<User> findByUsername(@PathVariable(name="id") String id) {
+        //调用UserService实现根据主键查询User
+        User user = userService.findById(id);
+        return new Result<User>(true, StatusCode.OK, "查询成功", user);
+    }
+
 
     /***
      * 查询User全部数据
