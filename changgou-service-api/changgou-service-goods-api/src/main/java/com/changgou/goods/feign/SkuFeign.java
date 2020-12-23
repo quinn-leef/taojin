@@ -91,4 +91,12 @@ public interface SkuFeign {
      */
     @GetMapping("/status/{status}")
     Result<List<Sku>> findByStatus(@PathVariable("status") String status);
+
+    /***
+     * 库存递减
+     * @param username
+     * @return
+     */
+    @PostMapping(value = "/decr/count")
+    Result decrCount(@RequestParam(value = "username") String username);
 }

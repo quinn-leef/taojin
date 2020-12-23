@@ -86,4 +86,12 @@ public interface UserFeign {
 
     @GetMapping("/load/{id}")
     Result<User> findByUsername(@PathVariable(name="id") String id);
+
+    /***
+     * 添加用户积分
+     * @param points
+     * @return
+     */
+    @GetMapping(value = "/points/add")
+    Result addPoints(@RequestParam(value = "points") Integer points);
 }

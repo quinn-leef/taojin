@@ -17,6 +17,8 @@ public class AuthorizeFilter implements GlobalFilter, Ordered {
 
     //令牌头名字
     private static final String AUTHORIZE_TOKEN = "Authorization";
+    // 用户登录地址
+    private static final String USER_LOGIN_URL = "http://localhost:9001/oauth/login";
 
     /***
      * 全局过滤器
@@ -55,12 +57,13 @@ public class AuthorizeFilter implements GlobalFilter, Ordered {
         if (null != first) {
             tokent = first.getValue();
         }
-
+//        tokent = "";
         //如果为空，则输出错误代码
         if (StringUtils.isEmpty(tokent)) {
             //设置方法不允许被访问，405错误代码
-            response.setStatusCode(HttpStatus.METHOD_NOT_ALLOWED);
-            return response.setComplete();
+//            response.setStatusCode(HttpStatus.METHOD_NOT_ALLOWED);
+//            return response.setComplete();
+            return needOauthorization(USER_LOGIN_URL + "?FROM=" + request.getURI(), exchange);
         }
 
         //解析令牌数据
@@ -68,7 +71,7 @@ public class AuthorizeFilter implements GlobalFilter, Ordered {
             System.out.println("bearer " + tokent);
 //            Claims claims = JwtUtil.parseJWT(tokent);
 //            request.mutate().header(AUTHORIZE_TOKEN, claims.toString());
-            request.mutate().header(AUTHORIZE_TOKEN, tokent);
+            request.mutate().header(AUTHORIZE_TOKEN, "bearer " + tokent);
         } catch (Exception e) {
             e.printStackTrace();
             //解析失败，响应401错误
@@ -88,5 +91,16 @@ public class AuthorizeFilter implements GlobalFilter, Ordered {
     @Override
     public int getOrder() {
         return 0;
+    }
+
+    /**
+     * 响应设置
+     */
+    public Mono<Void> needOauthorization(String url, ServerWebExchange exchange) {
+        ServerHttpResponse response = exchange.getResponse();
+        response.setStatusCode(HttpStatus.SEE_OTHER);
+        response.getHeaders().set("Location", url);
+
+        return exchange.getResponse().setComplete();
     }
 }

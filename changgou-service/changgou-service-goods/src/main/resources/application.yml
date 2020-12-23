@@ -9,6 +9,9 @@ spring:
     url: jdbc:mysql://192.168.0.128:3306/changgou_goods?useUnicode=true&characterEncoding=UTF-8
     username: root
     password: 123456
+  redis:
+    host: 192.168.0.128
+    port: 6379
 eureka:
   client:
     service-url:
@@ -23,3 +26,14 @@ mybatis:
     map-underscore-to-camel-case: true
   mapper-locations: classpath:mapper/*Mapper.xml
   type-aliases-package: com.changgou.goods.pojo
+
+
+#hystrix 配置
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000
+          strategy: SEMAPHORE

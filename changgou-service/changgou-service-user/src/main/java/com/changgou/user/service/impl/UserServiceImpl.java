@@ -210,4 +210,15 @@ public class UserServiceImpl implements UserService {
 //    public User findByUsername(String username) {
 //        return userMapper.selectByPrimaryKey(username);
 //    }
+
+    /***
+     * 修改用户积分
+     * @param username
+     * @param pint
+     * @return
+     */
+    @Override
+    public int addUserPoints(String username, Integer pint) {
+        return userMapper.addUserPoints(username,pint);
+    }
 }

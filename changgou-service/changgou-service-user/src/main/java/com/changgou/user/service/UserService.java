@@ -67,4 +67,12 @@ public interface UserService {
     List<User> findAll();
 
 //    User findByUsername(String username);
+
+    /***
+     * 添加用户积分
+     * @param username
+     * @param pint
+     * @return
+     */
+    int addUserPoints(String username,Integer pint);
 }

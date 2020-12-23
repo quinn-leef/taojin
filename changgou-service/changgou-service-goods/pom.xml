@@ -23,7 +23,12 @@
                 </exclusion>
             </exclusions>
         </dependency>
-
+        <!--order api 依赖-->
+        <dependency>
+            <groupId>com.sz.quinn</groupId>
+            <artifactId>changgou-service-order-api</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
 
 
     </dependencies>

@@ -16,6 +16,26 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Order(-1)
 class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
+//    /***
+//     * 忽略安全拦截的URL
+//     * @param web
+//     * @throws Exception
+//     */
+//    @Override
+//    public void configure(WebSecurity web) throws Exception {
+//        web.ignoring().antMatchers(
+//                "/user/login",
+//                "/css/**",
+//                "/oauth/login",
+//                "/login.html",
+//                "/login",
+//                "/data/**",
+//                "/fonts/**",
+//                "/img/**",
+//                "/js/**",
+//                "/user/logout");
+//    }
+
     /***
      * 忽略安全拦截的URL
      * @param web
@@ -24,8 +44,8 @@ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring().antMatchers(
-                "/oauth/login",
-                "/oauth/logout");
+                "/user/login",
+                "/user/logout","/oauth/login","/css/**","/data/**","/fonts/**","/img/**","/js/**");
     }
 
     /***
@@ -60,10 +80,12 @@ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .httpBasic()        //启用Http基本身份验证
                 .and()
                 .formLogin()       //启用表单身份验证
+                .loginPage("/oauth/login")
+                .loginProcessingUrl("/user/login")
                 .and()
                 .authorizeRequests()    //限制基于Request请求访问
                 .anyRequest()
                 .authenticated();       //其他请求都需要经过验证
-
+//        http.formLogin().loginPage("/oauth/login").loginProcessingUrl("/user/login");
     }
 }
