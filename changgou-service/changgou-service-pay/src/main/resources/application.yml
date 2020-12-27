@@ -1,24 +1,16 @@
 server:
-  port: 18090
+  port: 18092
 spring:
   application:
-    name: order
-  datasource:
-    driver-class-name: com.mysql.jdbc.Driver
-#    url: jdbc:mysql://192.168.0.128:3306/changgou_order?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
-    url: jdbc:mysql://192.168.0.128:3306/changgou_order?useUnicode=true&characterEncoding=UTF-8
-    username: root
-    password: 123456
-  redis:
-    host: 192.168.0.128
-    port: 6379
+    name: pay
   main:
     allow-bean-definition-overriding: true
   rabbitmq:
     host: 127.0.0.1
     username: guest
     password: guest
-
+    port: 5672
+    virtual-host: /
 eureka:
   client:
     service-url:
@@ -28,16 +20,24 @@ eureka:
 feign:
   hystrix:
     enabled: true
-
 #hystrix 配置
 hystrix:
   command:
     default:
       execution:
+        timeout:
+          #如果enabled设置为false，则请求超时交给ribbon控制
+          enabled: true
         isolation:
-          thread:
-            timeoutInMilliseconds: 10000
           strategy: SEMAPHORE
+
+#微信支付信息配置
+weixin:
+  appid: wx8397f8696b538317
+  partner: 1473426802
+  partnerkey: T6m9iK73b0kn9g5v426MKfHQH7X8rKwb
+  notifyurl: http://36405n45h7.qicp.vip:47538/weixin/pay/notify/url
+#  notifyurl: http://www.itcast.cn
 
 #位置支付交换机和队列
 mq:
@@ -48,3 +48,6 @@ mq:
       order: queue.order
     routing:
       key: queue.order
+
+
+

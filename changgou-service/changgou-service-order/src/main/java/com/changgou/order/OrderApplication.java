@@ -14,6 +14,8 @@ import tk.mybatis.spring.annotation.MapperScan;
 @EnableEurekaClient
 @MapperScan(basePackages = {"com.changgou.order.dao"})
 @EnableFeignClients(basePackages = {"com.changgou.goods.feign", "com.changgou.user.feign"})
+//@EnableRabbit
+//@ComponentScan
 public class OrderApplication {
 
     public static void main(String[] args) {

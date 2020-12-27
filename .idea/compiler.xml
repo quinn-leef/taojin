@@ -18,6 +18,7 @@
         <module name="changgou-service-goods-api" />
         <module name="changgou-service-order" />
         <module name="changgou-service-order-api" />
+        <module name="changgou-service-pay" />
         <module name="changgou-service-search" />
         <module name="changgou-service-search-api" />
         <module name="changgou-service-user" />
