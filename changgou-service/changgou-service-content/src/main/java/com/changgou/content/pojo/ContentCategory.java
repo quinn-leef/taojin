@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.lang.Long;
 import java.lang.String;
 /****
- * @Author:shenkunlin
+ * @Author:quinn
  * @Description:ContentCategory构建
  * @Date 2019/6/14 19:13
  *****/

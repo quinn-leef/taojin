@@ -19,9 +19,9 @@ import java.util.Map;
 import java.util.UUID;
 
 /****
- * @Author:shenkunlin
+ * @Author:quinn
  * @Description:
- * @Date 2019/6/14 0:18
+ *
  *****/
 @Api(value = "UserController")
 @RestController

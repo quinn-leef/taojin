@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Update;
 import tk.mybatis.mapper.common.Mapper;
 
 /****
- * @Author:shenkunlin
+ * @Author:quinn
  * @Description:User的Dao
  * @Date 2019/6/14 0:12
  *****/

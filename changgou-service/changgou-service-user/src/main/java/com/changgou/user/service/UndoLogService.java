@@ -3,7 +3,7 @@ import com.changgou.user.pojo.UndoLog;
 import com.github.pagehelper.PageInfo;
 import java.util.List;
 /****
- * @Author:shenkunlin
+ * @Author:quinn
  * @Description:UndoLog业务层接口
  * @Date 2019/6/14 0:16
  *****/
