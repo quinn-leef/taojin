@@ -324,14 +324,18 @@ public class OrderServiceImpl implements OrderService {
     public void updateStatus(String orderId,String transactionid) {
         //1.修改订单
         Order order = orderMapper.selectByPrimaryKey(orderId);
-        order.setUpdateTime(new Date());    //时间也可以从微信接口返回过来，这里为了方便，我们就直接使用当前时间了
-        order.setPayTime(order.getUpdateTime());    //不允许这么写
-        order.setTransactionId(transactionid);  //交易流水号
-        order.setPayStatus("1");    //已支付
-        orderMapper.updateByPrimaryKeySelective(order);
+        if (order !=null) {
+            order.setUpdateTime(new Date());    //时间也可以从微信接口返回过来，这里为了方便，我们就直接使用当前时间了
+            order.setPayTime(order.getUpdateTime());    //不允许这么写
+            order.setTransactionId(transactionid);  //交易流水号
+            order.setPayStatus("1");    //已支付
+            orderMapper.updateByPrimaryKeySelective(order);
 
-        //2.删除Redis中的订单记录
-        redisTemplate.boundHashOps("Order").delete(orderId);
+            //2.删除Redis中的订单记录
+            redisTemplate.boundHashOps("Order").delete(orderId);
+        } else {
+            System.out.println("order cannot be found in db");
+        }
     }
 
     /***

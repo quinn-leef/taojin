@@ -58,10 +58,16 @@ public class SeckillGoodsPushTask {
             List<SeckillGoods> seckillGoods = seckillGoodsMapper.selectByExample(example);
 //            List<SeckillGoods> seckillGoods = seckillGoodsMapper.selectByExample(null);
 
-//            System.out.println("SeckillGoods_" + extName + " seckillGoods " + seckillGoods);
+            System.out.println("SeckillGoods_" + extName + " seckillGoods " + seckillGoods);
 
             //将秒杀商品数据存入到Redis缓存
             for (SeckillGoods seckillGood : seckillGoods) {
+                //商品数据队列存储,防止高并发超卖
+                Long[] ids = pushIds(seckillGood.getStockCount(), seckillGood.getId());
+                redisTemplate.boundListOps("SeckillGoodsCountList_"+seckillGood.getId()).leftPushAll(ids);
+//自增计数器
+                redisTemplate.boundHashOps("SeckillGoodsCount").increment(seckillGood.getId(),seckillGood.getStockCount());
+
 //                System.out.println("SeckillGoods_" + extName + " seckillGood " + seckillGood);
 //                System.out.println("expiretime " + DateUtil.addDateHour(startTime, 2));
                 redisTemplate.boundHashOps("SeckillGoods_"+extName).put(seckillGood.getId(),seckillGood);
@@ -70,6 +76,23 @@ public class SeckillGoodsPushTask {
             }
         }
     }
+
+    /***
+     * 将商品ID存入到数组中
+     * @param len:长度
+     * @param id :值
+     * @return
+     */
+    public Long[] pushIds(int len,Long id){
+        Long[] ids = new Long[len];
+        for (int i = 0; i <ids.length ; i++) {
+            ids[i]=id;
+        }
+        return ids;
+    }
+
+
+
 
     public static void main(String[] args) {
         System.out.println("hello world");

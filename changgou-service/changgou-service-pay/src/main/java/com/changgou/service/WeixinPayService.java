@@ -17,4 +17,13 @@ public interface WeixinPayService {
      * @return
      */
     public Map queryPayStatus(String out_trade_no);
+
+    Map<String, String> createNative(Map<String, String> parameter);
+
+    /***
+     * 关闭支付
+     * @param orderId
+     * @return
+     */
+    Map<String,String> closePay(Long orderId) throws Exception;
 }

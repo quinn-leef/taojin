@@ -16,10 +16,11 @@ import tk.mybatis.spring.annotation.MapperScan;
 @EnableEurekaClient
 //@EnableFeignClients
 //@MapperScan(basePackages = {"com.changgou.seckill.dao"})
-@EnableFeignClients(basePackages = "com.changgou.goods.feign")
+@EnableFeignClients(basePackages = "com.changgou.pay.feign")
 @MapperScan(value = "com.changgou.seckill.dao")
 @EnableScheduling
 @EnableAsync
+//@EnableRabbit
 public class SeckillApplication {
 
 

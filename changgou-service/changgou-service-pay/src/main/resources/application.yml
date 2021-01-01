@@ -44,10 +44,15 @@ mq:
   pay:
     exchange:
       order: exchange.order
+      seckillorder: exchange.seckillorder
     queue:
       order: queue.order
+      seckillorder: queue.seckillorder
+      seckillordertimer: queue.seckillordertimer
+      seckillordertimerdelay: queue.seckillordertimerdelay
     routing:
       key: queue.order
+      seckillkey: queue.seckillorder
 
 
 

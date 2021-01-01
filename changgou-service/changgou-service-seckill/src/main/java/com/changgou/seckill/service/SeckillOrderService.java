@@ -81,4 +81,17 @@ public interface SeckillOrderService {
      * @param username
      */
     SeckillStatus queryStatus(String username);
+
+    /***
+     * 更新订单状态
+     * @param out_trade_no
+     * @param transaction_id
+     * @param username
+     */
+    void updatePayStatus(String out_trade_no, String transaction_id,String username);
+
+    /***
+     * 关闭订单，回滚库存
+     */
+    void closeOrder(String username);
 }

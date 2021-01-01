@@ -17,5 +17,25 @@
             <artifactId>changgou-service-seckill-api</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+
+        <!--加入ampq-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.sz.quinn</groupId>
+            <artifactId>changgou-service-pay-api</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <!--feign-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+
+
     </dependencies>
 </project>

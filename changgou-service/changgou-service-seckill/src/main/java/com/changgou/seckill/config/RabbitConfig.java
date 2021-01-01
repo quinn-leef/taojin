@@ -1,4 +1,4 @@
-package com.changgou.config;
+package com.changgou.seckill.config;
 
 import org.springframework.amqp.core.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,7 +54,7 @@ public class RabbitConfig {
         return  BindingBuilder.bind(createSeckillQueue()).to(basicSeckillExchanage()).with(env.getProperty("mq.pay.routing.seckillkey"));
     }
 
-    //////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////
     /**
      * 到期数据队列
      * @return
