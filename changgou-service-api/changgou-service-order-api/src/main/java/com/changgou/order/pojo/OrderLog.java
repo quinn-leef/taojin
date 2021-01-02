@@ -9,7 +9,7 @@ import java.lang.Integer;
 /****
  * @Author:shenkunlin
  * @Description:OrderLog构建
- * @Date 2019/6/14 19:13
+ * @Date 2021/01/01 19:13
  *****/
 @ApiModel(description = "OrderLog",value = "OrderLog")
 @Table(name="tb_order_log")

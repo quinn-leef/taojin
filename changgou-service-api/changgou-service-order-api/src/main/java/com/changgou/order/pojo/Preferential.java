@@ -10,7 +10,7 @@ import java.lang.Integer;
 /****
  * @Author:shenkunlin
  * @Description:Preferential构建
- * @Date 2019/6/14 19:13
+ * @Date 2021/01/01 19:13
  *****/
 @ApiModel(description = "Preferential",value = "Preferential")
 @Table(name="tb_preferential")

@@ -9,7 +9,7 @@ import java.lang.String;
 /****
  * @Author:shenkunlin
  * @Description:SeckillOrder构建
- * @Date 2019/6/14 19:13
+ * @Date 2021/01/01 19:13
  *****/
 @ApiModel(description = "SeckillOrder",value = "SeckillOrder")
 @Table(name="tb_seckill_order")

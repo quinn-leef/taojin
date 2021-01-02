@@ -9,7 +9,7 @@ import java.io.Serializable;
 /****
  * @Author:shenkunlin
  * @Description:Address构建
- * @Date 2019/6/14 19:13
+ * @Date 2021/01/01 19:13
  *****/
 @ApiModel(description = "Address",value = "Address")
 @Table(name="tb_address")

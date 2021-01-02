@@ -10,7 +10,7 @@ import java.lang.Integer;
 /****
  * @Author:shenkunlin
  * @Description:ReturnOrder构建
- * @Date 2019/6/14 19:13
+ * @Date 2021/01/01 19:13
  *****/
 @ApiModel(description = "ReturnOrder",value = "ReturnOrder")
 @Table(name="tb_return_order")

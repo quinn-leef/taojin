@@ -8,7 +8,7 @@ import java.lang.String;
 /****
  * @Author:quinn
  * @Description:ContentCategory构建
- * @Date 2019/6/14 19:13
+ * @Date 2021/01/01 19:13
  *****/
 @ApiModel(description = "ContentCategory",value = "ContentCategory")
 @Table(name="tb_content_category")

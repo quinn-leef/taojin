@@ -8,7 +8,7 @@ import java.lang.Integer;
 /****
  * @Author:shenkunlin
  * @Description:ReturnCause构建
- * @Date 2019/6/14 19:13
+ * @Date 2021/01/01 19:13
  *****/
 @ApiModel(description = "ReturnCause",value = "ReturnCause")
 @Table(name="tb_return_cause")

@@ -12,7 +12,7 @@ import java.util.Date;
 /****
  * @Author:shenkunlin
  * @Description:Sku构建
- * @Date 2019/6/14 19:13
+ * @Date 2021/01/01 19:13
  *****/
 @ApiModel(description = "Sku",value = "Sku")
 @Table(name="tb_sku")

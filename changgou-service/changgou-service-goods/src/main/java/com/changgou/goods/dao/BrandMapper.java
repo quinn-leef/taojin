@@ -9,7 +9,7 @@ import java.util.List;
 /****
  * @Author:quinn
  * @Description:Brand的Dao
- * @Date 2019/6/14 0:12
+ * @Date 2021/01/01 0:12
  *****/
 public interface BrandMapper extends Mapper<Brand> {
 

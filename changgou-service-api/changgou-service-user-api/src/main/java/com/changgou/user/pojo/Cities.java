@@ -11,7 +11,7 @@ import java.io.Serializable;
 /****
  * @Author:shenkunlin
  * @Description:Cities构建
- * @Date 2019/6/14 19:13
+ * @Date 2021/01/01 19:13
  *****/
 @ApiModel(description = "Cities",value = "Cities")
 @Table(name="tb_cities")

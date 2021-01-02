@@ -9,7 +9,7 @@ import java.io.Serializable;
 /****
  * @Author:shenkunlin
  * @Description:Template构建
- * @Date 2019/6/14 19:13
+ * @Date 2021/01/01 19:13
  *****/
 @ApiModel(description = "Template",value = "Template")
 @Table(name="tb_template")
