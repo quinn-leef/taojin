@@ -65,7 +65,7 @@ public class SeckillGoodsPushTask {
                 //商品数据队列存储,防止高并发超卖
                 Long[] ids = pushIds(seckillGood.getStockCount(), seckillGood.getId());
                 redisTemplate.boundListOps("SeckillGoodsCountList_"+seckillGood.getId()).leftPushAll(ids);
-//自增计数器
+                //自增计数器
                 redisTemplate.boundHashOps("SeckillGoodsCount").increment(seckillGood.getId(),seckillGood.getStockCount());
 
 //                System.out.println("SeckillGoods_" + extName + " seckillGood " + seckillGood);
